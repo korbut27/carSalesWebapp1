@@ -1,7 +1,7 @@
 package com.example.carSalesWebapp1.controller;
 
 
-import com.example.carSalesWebapp1.Service.UserSevice;
+import com.example.carSalesWebapp1.Service.UserService;
 import com.example.carSalesWebapp1.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import java.util.Map;
 @Controller
 public class RegistrationController {
     @Autowired
-    private UserSevice userSevice;
+    private UserService userService;
 
     @GetMapping("/registration")
     public String registration() {
@@ -24,7 +24,7 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
-        if (!userSevice.addUser(user)) {
+        if (!userService.addUser(user)) {
             model.put("message", "User with this name/email already exists!");
             return "registration";
         }
@@ -34,7 +34,7 @@ public class RegistrationController {
 
     @GetMapping("/activate/{code}")
     public String activate(Model model, @PathVariable String code) {
-        boolean isActivated = userSevice.activateUser(code);
+        boolean isActivated = userService.activateUser(code);
 
         if (isActivated) {
             model.addAttribute("message", "User successfully activated");
