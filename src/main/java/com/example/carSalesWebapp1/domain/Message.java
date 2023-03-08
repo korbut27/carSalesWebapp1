@@ -6,10 +6,13 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import java.io.Serializable;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.*;
 
 @Entity
-public class Message {
+public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy= AUTO)
     private Long id;
@@ -80,4 +83,5 @@ public class Message {
     public void setFilename(String filename) {
         this.filename = filename;
     }
+
 }
