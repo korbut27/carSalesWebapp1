@@ -12,4 +12,15 @@
         <input type="hidden" value="${_csrf.token}" name="_csrf">
         <button type="submit">Save</button>
     </form>
+
+    <#if !user.roles?seq_contains(roles[1])>
+        <form action="/user/delete" method="post">
+            <input type="hidden" value="${user.id}" name="userId">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button type="submit">Delete</button>
+        </form>
+    </#if>
+
+
+
 </@c.page>

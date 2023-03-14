@@ -130,4 +130,8 @@ public class UserService implements UserDetailsService {
             sendMessage(user);
         }
     }
+
+    public void deleteProfile(User user) {
+        userRepo.deleteById(user.getId());
+    }
 }

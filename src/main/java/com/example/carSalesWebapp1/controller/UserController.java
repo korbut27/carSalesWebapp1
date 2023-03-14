@@ -44,6 +44,13 @@ public class UserController {
         return "redirect:/user";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("delete")
+    public String deleteProfile( @RequestParam("userId") User user){
+        userService.deleteProfile(user);
+        return "redirect:/user";
+    }
+
     @GetMapping("profile")
     public String getProfile(Model model, @AuthenticationPrincipal User user){
         model.addAttribute("username", user.getUsername());
@@ -59,4 +66,5 @@ public class UserController {
         userService.updateProfile(user, password, email);
         return "redirect:/user/profile";
     }
+
 }
