@@ -1,6 +1,5 @@
 package com.example.carSalesWebapp1.controller;
 
-import com.example.carSalesWebapp1.domain.Message;
 import com.example.carSalesWebapp1.domain.User;
 import com.example.carSalesWebapp1.domain.carHierarchy.Brand;
 import com.example.carSalesWebapp1.domain.carHierarchy.Car;
@@ -35,9 +34,21 @@ public class CarsController {
     private String uploadPath;
 
     @GetMapping
-    public String main(){
-        return "carsList";
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
+        Iterable<Car> cars = carRepo.findAll();
+
+        if (filter != null && !filter.isEmpty()) {
+            cars = carRepo.findAll();
+        } else {
+            cars = carRepo.findAll();
+        }
+
+        model.addAttribute("cars", cars);
+        model.addAttribute("filter", filter);
+
+        return "cars";
     }
+
     @GetMapping("/add")
     public String add(Model model){
         model.addAttribute("brands", Brand.values());
@@ -66,7 +77,8 @@ public class CarsController {
 
         }
         carRepo.save(car);
-        return "carsList";
+//        return "greeting";
+        return "redirect:/cars";
     };
 
     private void saveFile(Car car, MultipartFile file) throws IOException {
