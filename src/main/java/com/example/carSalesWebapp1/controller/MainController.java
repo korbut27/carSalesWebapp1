@@ -70,7 +70,6 @@ public class MainController {
         }else {
             saveFile(message, file);
             model.addAttribute("message", null);
-
             messageRepo.save(message);
         }
 

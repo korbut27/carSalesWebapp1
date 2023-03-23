@@ -4,7 +4,6 @@ package com.example.carSalesWebapp1.controller;
 import com.example.carSalesWebapp1.Service.UserService;
 import com.example.carSalesWebapp1.domain.User;
 import com.example.carSalesWebapp1.domain.dto.CaptchaResponseDto;
-import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
