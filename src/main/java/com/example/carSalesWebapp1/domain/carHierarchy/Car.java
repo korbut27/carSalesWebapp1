@@ -18,6 +18,8 @@ public class Car {
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
+    private String brand;
+
     @NotBlank(message = "Please fill the field")
     @Length(max = 255, message = "Name to long (more than 255)")
     private String name;
@@ -238,6 +240,14 @@ public class Car {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }
 

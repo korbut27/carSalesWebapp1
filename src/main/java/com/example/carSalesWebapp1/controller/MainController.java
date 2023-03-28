@@ -48,7 +48,6 @@ public class MainController {
 
         model.addAttribute("messages", messages);
         model.addAttribute("filter", filter);
-
         return "main";
     }
 

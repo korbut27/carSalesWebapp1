@@ -6,15 +6,23 @@
         <title>Carsales</title>
         <link rel="stylesheet" href="/static/style.css">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<#--        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+        <meta name="viewport" content="width=device-width" />
+        <!--
+          Need a visual blank slate?
+          Remove all code in `styles.css`!
+        -->
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
               integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
               crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-              crossorigin="anonymous">
+        <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+                rel="stylesheet"
+                integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+                crossorigin="anonymous"
+        />
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script type="module" src="/static/script.js"></script>
     </head>
