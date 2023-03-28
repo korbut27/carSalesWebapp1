@@ -110,9 +110,9 @@
                     class="form-check-input"
                     type="checkbox"
                     name="body1"
-                    value="sedan"
+                    value="Седан"
                     <#if body??>
-                        ${body?seq_contains("sedan")?string("checked", "")}
+                        ${body?seq_contains("Седан")?string("checked", "")}
                     </#if>
             />
             <label class="form-check-label" for="inlineRadio1">Седан</label>
@@ -122,9 +122,9 @@
                     class="form-check-input"
                     type="checkbox"
                     name="body2"
-                    value="coupe"
+                    value="Купе"
                     <#if body??>
-                        ${body?seq_contains("coupe")?string("checked", "")}
+                        ${body?seq_contains("Купе")?string("checked", "")}
                     </#if>
             />
             <label class="form-check-label" for="inlineRadio2">Купе</label>
@@ -134,9 +134,9 @@
                     class="form-check-input"
                     type="checkbox"
                     name="body3"
-                    value="wagon"
+                    value="Универсал"
                     <#if body??>
-                        ${body?seq_contains("wagon")?string("checked", "")}
+                        ${body?seq_contains("Универсал")?string("checked", "")}
                     </#if>
             />
             <label class="form-check-label" for="inlineRadio3">Универсал</label>
@@ -146,9 +146,9 @@
                     class="form-check-input"
                     type="checkbox"
                     name="body4"
-                    value="hatchback"
+                    value="Хэтчбэк"
                     <#if body??>
-                        ${body?seq_contains("hatchback")?string("checked", "")}
+                        ${body?seq_contains("Хэтчбэк")?string("checked", "")}
                     </#if>
             />
             <label class="form-check-label" for="inlineRadio4">Хэтчбэк</label>
@@ -158,9 +158,9 @@
                     class="form-check-input"
                     type="checkbox"
                     name="body5"
-                    value="minivan"
+                    value="Минивэн"
                     <#if body??>
-                        ${body?seq_contains("minivan")?string("checked", "")}
+                        ${body?seq_contains("Минивэн")?string("checked", "")}
                     </#if>
             />
             <label class="form-check-label" for="inlineRadio5">Минивэн</label>
@@ -170,9 +170,9 @@
                     class="form-check-input"
                     type="checkbox"
                     name="body6"
-                    value="convertible"
+                    value="Кабриолет"
                     <#if body??>
-                        ${body?seq_contains("convertible")?string("checked", "")}
+                        ${body?seq_contains("Кабриолет")?string("checked", "")}
                     </#if>
             />
             <label class="form-check-label" for="inlineRadio6">Кабриолет</label>
@@ -182,9 +182,9 @@
     <div class="form-floating mb-2">
         <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="condition">
             <option
-                    value="new"
+                    value="Новый"
                     <#if condition??>
-                        ${condition?contains("new")?string("selected", "")}
+                        ${condition?contains("Новый")?string("selected", "")}
                     <#else>
                         selected
                     </#if>
@@ -192,17 +192,17 @@
                 Новый
             </option>
             <option
-                    value="no repair"
+                    value="Ремонта не требует"
                     <#if condition??>
-                        ${condition?contains("no repair")?string("selected", "")}
+                        ${condition?contains("Ремонта не требует")?string("selected", "")}
                     </#if>
             >
                 Ремонта не требует
             </option>
             <option
-                    value="need repair"
+                    value="Требует ремонта"
                     <#if condition??>
-                        ${condition?contains("need repair")?string("selected", "")}
+                        ${condition?contains("Требует ремонта")?string("selected", "")}
                     </#if>
             >
                 Требует ремонта
@@ -241,6 +241,7 @@
         </div>
     </div>
 
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 
     <a href="/cars">Сбросить фильтр</a>
     <button type="submit" class="btn btn-primary float-end">Применить</button>

@@ -1,6 +1,5 @@
 package com.example.carSalesWebapp1.controller;
 
-import com.example.carSalesWebapp1.domain.Role;
 import com.example.carSalesWebapp1.domain.User;
 import com.example.carSalesWebapp1.domain.carHierarchy.Body;
 import com.example.carSalesWebapp1.domain.carHierarchy.Brand;
@@ -12,10 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -26,7 +22,6 @@ import java.util.*;
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
-
     @Autowired
     CarRepo carRepo;
 
@@ -83,8 +78,10 @@ public class CarsController {
         } else {
             cars = carRepo.findAll();
         }
+        List<String> files = new ArrayList<>();
 
         model.addAttribute("cars", cars);
+        model.addAttribute("files", files);
 
         return "cars";
     }
@@ -95,19 +92,32 @@ public class CarsController {
         return "carsAdd";
     }
 
+    @GetMapping("/view/{car}")
+    public String view(
+            @PathVariable Car car,
+            Model model
+            ){
+        User user = car.getAuthor();
+        model.addAttribute(car);
+        model.addAttribute(user);
+
+        return "carView";
+    }
+
     @PostMapping("/add")
     public String add(
             @AuthenticationPrincipal User user,
             @Valid Car car,
             BindingResult bindingResult,
             Model model,
-            @RequestParam("file") MultipartFile file,
+            @RequestParam("files") List<MultipartFile> files,
             @RequestParam("brand") Brand brand
     ) throws IOException {
         car.setAuthor(user);
         car.setStatus("on moderation");
         car.setBrands(Collections.singleton(brand));
-        saveFile(car, file);
+        saveFile(car, files);
+
 
 
         if(bindingResult.hasErrors()){
@@ -117,24 +127,28 @@ public class CarsController {
 
         }
         carRepo.save(car);
-//        return "greeting";
         return "redirect:/cars";
     };
 
-    private void saveFile(Car car, MultipartFile file) throws IOException {
-        if (file != null && !file.getOriginalFilename().isEmpty()) {
-            File uploadDir = new File(uploadPath);
+    private void saveFile(Car car, List<MultipartFile> files) throws IOException {
+        List<String> fileNames = new ArrayList<>();
+        for(MultipartFile file: files){
+            if (file != null && !file.getOriginalFilename().isEmpty()) {
+                File uploadDir = new File(uploadPath);
 
-            if(!uploadDir.exists()){
-                uploadDir.mkdir();
+                if(!uploadDir.exists()){
+                    uploadDir.mkdir();
+                }
+
+                String uuidFile = UUID.randomUUID().toString();
+                String resultFilename = uuidFile + "." + file.getOriginalFilename();
+
+                file.transferTo(new File(uploadPath + "/" + resultFilename));
+
+                fileNames.add(resultFilename);
             }
-
-            String uuidFile = UUID.randomUUID().toString();
-            String resultFilename = uuidFile + "." + file.getOriginalFilename();
-
-            file.transferTo(new File(uploadPath + "/" + resultFilename));
-
-            car.setFilename(resultFilename);
         }
+        String resultFilename = String.join("|", fileNames);
+        car.setFilename(resultFilename);
     }
 }

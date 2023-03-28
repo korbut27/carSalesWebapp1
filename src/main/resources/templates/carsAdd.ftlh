@@ -15,7 +15,7 @@
 
             <div class="mb-3">
                 <label for="formFile" class="form-label">Добавить фото</label>
-                <input class="form-control" type="file" name="file" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                <input class="form-control" type="file" multiple name="files">
                 <img class="mt-3" id="pic"/>
             </div>
 
@@ -89,10 +89,10 @@
                 >Состояние</label
                 >
                 <select class="form-select" name="condition">
-                    <option value="new" selected>Выбрать...</option>
-                    <option value="new">Новый</option>
-                    <option value="no repair">Ремонта не требует</option>
-                    <option value="need repair">Требует ремонта</option>
+                    <option value="Новый" selected>Выбрать...</option>
+                    <option value="Новый">Новый</option>
+                    <option value="Ремонта не требует">Ремонта не требует</option>
+                    <option value="Требует ремонта">Требует ремонта</option>
                 </select>
             </div>
 
@@ -129,7 +129,7 @@
                                 class="form-check-input"
                                 type="radio"
                                 name="body"
-                                value="sedan"
+                                value="Седан"
                                 checked
                         />
                         <label class="form-check-label" for="inlineRadio1">Седан</label>
@@ -139,7 +139,7 @@
                                 class="form-check-input"
                                 type="radio"
                                 name="body"
-                                value="coupe"
+                                value="Купе"
                         />
                         <label class="form-check-label" for="inlineRadio2">Купе</label>
                     </div>
@@ -148,7 +148,7 @@
                                 class="form-check-input"
                                 type="radio"
                                 name="body"
-                                value="wagon"
+                                value="Универсал"
                         />
                         <label class="form-check-label" for="inlineRadio3">Универсал</label>
                     </div>
@@ -157,7 +157,7 @@
                                 class="form-check-input"
                                 type="radio"
                                 name="body"
-                                value="hatchback"
+                                value="Хэтчбэк"
                         />
                         <label class="form-check-label" for="inlineRadio4">Хэтчбэк</label>
                     </div>
@@ -166,7 +166,7 @@
                                 class="form-check-input"
                                 type="radio"
                                 name="body"
-                                value="minivan"
+                                value="Минивэн"
                         />
                         <label class="form-check-label" for="inlineRadio5">Минивэн</label>
                     </div>
@@ -175,7 +175,7 @@
                                 class="form-check-input"
                                 type="radio"
                                 name="body"
-                                value="convertible"
+                                value="Кабриолет"
                         />
                         <label class="form-check-label" for="inlineRadio6">Кабриолет</label>
                     </div>
@@ -217,10 +217,10 @@
                     >Коробка передач</label
                     >
                     <select class="form-select" name="gearbox">
-                        <option value="automatic" selected>Выбрать...</option>
-                        <option value="automatic">АКП</option>
-                        <option value="mechanical">МКП</option>
-                        <option value="robot">Роботизированная</option>
+                        <option value="Автоматическая" selected>Выбрать...</option>
+                        <option value="Автоматическая">АКП</option>
+                        <option value="Механическая">МКП</option>
+                        <option value="Роботизированная">Роботизированная</option>
                     </select>
                 </div>
                 <div class="input-group mb-3">
@@ -228,10 +228,10 @@
                     >Привод</label
                     >
                     <select class="form-select" name="drive">
-                        <option value="fwd" selected>Выбрать...</option>
-                        <option value="fwd">Передний</option>
-                        <option value="rwd">Задний</option>
-                        <option value="awd">Полный</option>
+                        <option value="Передний" selected>Выбрать...</option>
+                        <option value="Передний">Передний</option>
+                        <option value="Задний">Задний</option>
+                        <option value="Полный">Полный</option>
                     </select>
                 </div>
 
